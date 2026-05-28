@@ -13,6 +13,6 @@ $smarty->assign(
     'cats_array', array_slice(json_decode($data),0,3)
 );
 
-// Отображаем темплейт главной страницы
+// Отображаем темплейт главной страницы2
 $smarty->display('index.tpl');
 ?>
