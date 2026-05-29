@@ -2,18 +2,11 @@
 require_once 'vendor/autoload.php';
 use Smarty\Smarty;
 $smarty = new Smarty();
-$smarty->debugging = true;
-
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
 $mysqli = new mysqli($_ENV['DB_HOST'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_DATABASE']);
 
-$smarty->caching = true;
-$smarty->cache_lifetime = 0;
-
 $query = $mysqli->query('SELECT * FROM news_cats LIMIT 3');
-
 $categories = [];
 foreach($query as $item) {
     $item['posts'] = [];
