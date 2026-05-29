@@ -12,14 +12,11 @@
         <style>
             body {
                 --bg-main: #6801683b;
-                --bg-second: <?=$bgSec?>;
-                --bg-third: <?=$stroke?>;
+                --bg-second: #efefef;
                 --primary-main: #680168;
                 --primary-second: #ffc107;
                 --text-main: #0f0f0f;
-                --text-second: #353535;
-                --stroke-main: <?=$hover?>;
-                --stroke-second: <?=$second?>;
+                --text-second: #767676;
                 --white: #fff;
                 --font-family: "Mulish", sans-serif;
                 --second-family: "Inter", sans-serif;
