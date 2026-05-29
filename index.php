@@ -1,18 +1,29 @@
 <?php
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 use Smarty\Smarty;
 $smarty = new Smarty();
+$smarty->debugging = true;
 
-// Включение кэширования.
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$mysqli = new mysqli($_ENV['DB_HOST'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_DATABASE']);
+
 $smarty->caching = true;
-// Время жизни кеша в секундах (-1 - включает его навсегда).
 $smarty->cache_lifetime = 0;
 
-$data = require_once($_SERVER['DOCUMENT_ROOT'] . '/data/news-cats-data.php');
-$smarty->assign(
-    'cats_array', array_slice(json_decode($data),0,3)
-);
+$query = $mysqli->query('SELECT * FROM news_cats LIMIT 3');
 
-// Отображаем темплейт главной страницы2
+$categories = [];
+foreach($query as $item) {
+    $item['posts'] = [];
+    $postQuery = $mysqli->query('SELECT * FROM news WHERE JSON_CONTAINS(news_cats_id,"' . $item['id'] . '") ORDER BY published DESC LIMIT 3');
+    foreach($postQuery as $row) {
+        array_push($item['posts'],$row);
+    }
+    array_push($categories,$item);
+}
+
+$smarty->assign('cats_array', $categories);
 $smarty->display('index.tpl');
 ?>
