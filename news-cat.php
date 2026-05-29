@@ -2,31 +2,44 @@
 require 'vendor/autoload.php';
 use Smarty\Smarty;
 $smarty = new Smarty();
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$mysqli = new mysqli($_ENV['DB_HOST'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_DATABASE']);
 
-$mysqli = new mysqli('localhost','root','','pure-php.local');
-if($mysqli->connect_error) {
-    die('Отсуствует подключение к базам данных: ' . $mysqli->connect_error);
-};
+$catsQuery = $mysqli->query('SELECT * FROM news_cats WHERE id = "'. $_GET['id'] .'"');
+$categoryInfo = mysqli_fetch_assoc($catsQuery);
 
-$catsQuery = $mysqli->prepare('SELECT * FROM news_cats WHERE id = (?)');
-$catsQuery->bind_param('i',$_GET['id']);
-$catsQuery->execute();
-$categoryInfo = mysqli_fetch_assoc($catsQuery->get_result());
-$categoryName = $categoryInfo['name'];
+if(!empty($_POST['sort'])) {
+    $sortType = ($_POST['sort']);
+    $smarty->assign('selected',$sortType);
+}
 
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$postsPerPage = 4;
+$offset = ($currentPage - 1) * $postsPerPage;
 $news = [];
-$postQuery = $mysqli->query('SELECT * FROM news WHERE JSON_CONTAINS(news_cats_id, "1")');
+if(!empty($sortType) && $sortType === 'by-views') {
+    $postQuery = $mysqli->query('SELECT * FROM news WHERE JSON_CONTAINS(news_cats_id,"'.$categoryInfo['id'].'") ORDER BY views_count DESC LIMIT '.$offset.','.$postsPerPage.'');
+} else {
+    $postQuery = $mysqli->query('SELECT * FROM news WHERE JSON_CONTAINS(news_cats_id,"'.$categoryInfo['id'].'") ORDER BY published DESC LIMIT '.$offset.','.$postsPerPage.'');
+}
 foreach($postQuery as $row) {
     array_push($news,$row);
 };
+
+$countNews = mysqli_fetch_assoc($mysqli->query('SELECT COUNT(*) AS count FROM news WHERE JSON_CONTAINS(news_cats_id,"'.$categoryInfo['id'].'")'))['count'];
+$countPages = ceil($countNews / $postsPerPage);
+if($countPages >= 1) {
+    $pagination = [];
+    for($i = 1; $i <= $countPages; $i++){
+        array_push($pagination,$i);
+    }
+    $smarty->assign('pagination', $pagination);
+}
+
 $smarty->assign('news',$news);
-
-$data = require_once($_SERVER['DOCUMENT_ROOT'] . '/data/news-cats-data.php');
-$smarty->assign(
-    'news_cats_array', json_decode($data)
-);
-
-$smarty->assign('h1', $categoryName);
-
-$smarty->display('news-cat.tpl')
+$smarty->assign('h1', $categoryInfo['name']);
+$smarty->assign('cat_desc',$categoryInfo['description']);
+$smarty->assign('cat_id',$categoryInfo['id']);
+$smarty->display('news-cat.tpl');
 ?>
