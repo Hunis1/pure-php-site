@@ -1,7 +1,7 @@
 Installation:
 1) Start your open server (or other tools for local development)
 2) Create folder with name "pure-php.local" at open server panel (or other tools for local development)
-3) Copy all files from this repository from "pure-php-site" folder, into created folder at step 1
+3) Copy all files from this repository (exclude DATABASE file), into created folder at step 1
 4) Open terminal in your workspace and use command "npm install", for create node_modules folder (it will be auto compiled from package.json)
 5) As 4th step use command "composer install"
 6) Download database "pure-php.sql"
