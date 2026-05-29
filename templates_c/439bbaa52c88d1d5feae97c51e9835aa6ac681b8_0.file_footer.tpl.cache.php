@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-27 12:37:59
+/* Smarty version 5.8.0, created on 2026-05-28 13:53:42
   from 'file:footer.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a16bb77adfca0_28512332',
+  'unifunc' => 'content_6a181eb64be3c2_96124852',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,9 +20,9 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a16bb77adfca0_28512332 (\Smarty\Template $_smarty_tpl) {
+function content_6a181eb64be3c2_96124852 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\OSPanel\\domains\\pure-php.local\\templates';
-$_smarty_tpl->getCompiled()->nocache_hash = '9910199486a16bb77adf7f5_76060672';
+$_smarty_tpl->getCompiled()->nocache_hash = '4653059396a181eb64bdf04_53995560';
 ?>
         <footer id="footer">
                 <div class="container">

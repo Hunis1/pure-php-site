@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-27 12:38:04
+/* Smarty version 5.8.0, created on 2026-05-29 15:29:30
   from 'file:header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a16bb7ccd9eb7_67531446',
+  'unifunc' => 'content_6a1986aaaea579_88535815',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4ee98886c7a2492d4901499ca655f17aaf29ff9' => 
     array (
       0 => 'header.tpl',
-      1 => 1779874672,
+      1 => 1780057718,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6a16bb7ccd9eb7_67531446 (\Smarty\Template $_smarty_tpl) {
+function content_6a1986aaaea579_88535815 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\OSPanel\\domains\\pure-php.local\\templates';
 ?><!doctype html>
 <html>
@@ -38,22 +38,11 @@ $_smarty_current_dir = 'C:\\OSPanel\\domains\\pure-php.local\\templates';
         <style>
             body {
                 --bg-main: #6801683b;
-                --bg-second: <?php echo '<?'; ?>
-=$bgSec<?php echo '?>'; ?>
-;
-                --bg-third: <?php echo '<?'; ?>
-=$stroke<?php echo '?>'; ?>
-;
+                --bg-second: #efefef;
                 --primary-main: #680168;
                 --primary-second: #ffc107;
                 --text-main: #0f0f0f;
-                --text-second: #353535;
-                --stroke-main: <?php echo '<?'; ?>
-=$hover<?php echo '?>'; ?>
-;
-                --stroke-second: <?php echo '<?'; ?>
-=$second<?php echo '?>'; ?>
-;
+                --text-second: #767676;
                 --white: #fff;
                 --font-family: "Mulish", sans-serif;
                 --second-family: "Inter", sans-serif;

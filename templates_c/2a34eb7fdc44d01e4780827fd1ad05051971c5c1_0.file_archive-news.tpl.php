@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.8.0, created on 2026-05-27 12:30:53
-  from 'file:news.tpl' */
+/* Smarty version 5.8.0, created on 2026-05-28 14:49:57
+  from 'file:./archive-news.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.8.0',
-  'unifunc' => 'content_6a16b9cd1841d9_13126067',
+  'unifunc' => 'content_6a182be5c00cd9_39365120',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '75882961a0e02ae081ca72ac7b2f3eb870e29f17' => 
+    '2a34eb7fdc44d01e4780827fd1ad05051971c5c1' => 
     array (
-      0 => 'news.tpl',
-      1 => 1779874244,
+      0 => './archive-news.tpl',
+      1 => 1779875218,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ))) {
-function content_6a16b9cd1841d9_13126067 (\Smarty\Template $_smarty_tpl) {
+function content_6a182be5c00cd9_39365120 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\OSPanel\\domains\\pure-php.local\\templates';
 $_smarty_tpl->renderSubTemplate('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
@@ -39,7 +39,7 @@ $foreach0DoElse = false;
                 <div class="category-item">
                     <div class="category-item__name"><?php echo $_smarty_tpl->getValue('cat')->name;?>
 </div>
-                    <a href="news.php?page=news&id=<?php echo $_smarty_tpl->getValue('cat')->id;?>
+                    <a href="news-cat.php?id=<?php echo $_smarty_tpl->getValue('cat')->id;?>
 " class="btn">Все статьи</a>
                 </div>
             <?php
