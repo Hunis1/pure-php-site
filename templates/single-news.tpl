@@ -1,7 +1,7 @@
 {include file='header.tpl'}
 <main>
     <div class="container">
-        <h1 class="page-title">{$h1}</h1>
+        <h1 class="page-title">{$1}</h1>
         <div class="single-content">
             <div class="single-content__left">
                 {if !empty($image)}
